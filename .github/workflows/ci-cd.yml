@@ -43,4 +43,6 @@ jobs:
 
         # PASO DE AUTOMATIZACIÓN DE RENDER
       - name: Trigger Render Deploy Hook
-        run: curl -X GET "${{ secrets.RENDER_DEPLOY_HOOK }}" # Usamos GET con curl
+        run: |
+          DEPLOY_HOOK=${{ secrets.RENDER_DEPLOY_HOOK }}
+          curl -X POST "$DEPLOY_HOOK"
