@@ -44,4 +44,8 @@ jobs:
         # PASO DE AUTOMATIZACIÓN DE RENDER
 
       - name: Trigger Render Deploy Hook
-        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+        # INYECTAMOS LA URL SECRETA AQUÍ
+        env:
+          RENDER_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        # Y la usamos en el comando RUN
+        run: curl -X POST "$RENDER_HOOK"
