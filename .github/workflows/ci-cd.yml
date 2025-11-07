@@ -42,7 +42,6 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/fastapi-app
 
         # PASO DE AUTOMATIZACIÓN DE RENDER
+
       - name: Trigger Render Deploy Hook
-        run: |
-          DEPLOY_HOOK=${{ secrets.RENDER_DEPLOY_HOOK }}
-          curl -X POST "$DEPLOY_HOOK"
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
